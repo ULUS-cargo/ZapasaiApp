@@ -69,7 +69,7 @@ export default function TabNavigator() {
 					component={ShopsScreen}
 					options={{
 						tabBarIcon: ({ color }) => (
-							<Fontisto name="shopping-store" size={24} color="black" />
+							<Fontisto name="shopping-store" size={24} color={color} />
 						),
 					}}
 				/>
