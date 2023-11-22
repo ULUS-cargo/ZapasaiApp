@@ -18,7 +18,7 @@ export default function AllHustoryScreen() {
           
 				</ImageBackground>
 			</View>
-			<StatusBar style="light" backgroundColor="#1E1E20" />
+			<StatusBar  backgroundColor="#1E1E20" />
 		</SafeAreaView>
 	);
 }
@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
     padding: 60,
     marginLeft:50,
     marginRight:50,
-    backgroundColor:'#ffff',
-    borderRadius:18
+    backgroundColor:'#ffff'
   },
 
 	registrationBackground: {

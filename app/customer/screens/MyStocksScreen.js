@@ -13,7 +13,7 @@ export default function AllHustoryScreen(){
 }
 const styles = StyleSheet.create({
   container:{
-    backgroundColor: '#f124',
+    backgroundColor: '#F6F6FA',
     flex:5
   }
 
