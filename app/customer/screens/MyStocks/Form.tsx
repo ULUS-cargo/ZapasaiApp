@@ -30,7 +30,7 @@ export default function Form({ addHandler }) {
 			<TextInput
 				style={styles.input}
 				onChangeText={onchange}
-				placeholder="Впиши задачу!"
+				placeholder="Впиши  категорию"
 				placeholderTextColor='white'
 			/>
 			<TouchableOpacity>
@@ -39,14 +39,13 @@ export default function Form({ addHandler }) {
 						
 						backgroundColor: "#FF784C",
 						width: 50,
-						height: 50,
+						height: 75,
 						alignItems:'center',
 						justifyContent:'center',
-						borderTopLeftRadius:15,
-						borderBottomLeftRadius:15,
-						marginRight:50,
+						borderRadius:15,
+						
 					}}>
-					<Feather name="send" size={24} color="#FFFF" />
+					<Feather name="send" size={24} color="#FFFF" onPress={()=> addHandler(text)} />
 				</View>
 			</TouchableOpacity>
 		</View>
@@ -56,8 +55,7 @@ export default function Form({ addHandler }) {
 const styles = StyleSheet.create({
 	main: {
 		backgroundColor: "#4A4A4C",
-		borderRadius: 20,
-		alignItems: "flex-start",
+		borderRadius: 28,
 		flexDirection: "row",
 		alignItems: 'center',
 	},
@@ -68,9 +66,8 @@ const styles = StyleSheet.create({
 		color: "#ffff",
 		borderBottomWidth: 1,
 		borderColor: "black",
-
 		marginVertical: 30,
-		//marginHorizontal: "20%",
+		marginHorizontal: "10%",
 		width: "60%",
 	},
 });

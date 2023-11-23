@@ -7,6 +7,8 @@ import {
 	Button,
 	TouchableOpacity,
 	Modal,
+	ScrollView,
+	FlatList,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -27,10 +29,12 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import DatePicker, { getFormatedDate } from "react-native-modern-datepicker";
 import { isModifier } from "typescript";
 
+import Form from "./MyStocks/Form";
+import ListItem from "./MyStocks/ListItem";
 
 
-import Form from './MyStocks/Form';
 export default function MyStockScreen() {
+	
 	const today = new Date();
 	const startDate = getFormatedDate(
 		today.setDate(today.getDate() + 1),
@@ -50,13 +54,10 @@ export default function MyStockScreen() {
 
 	const snapPointsCategory = ["90%"];
 	const bottomSheetRefCategory = useRef<BottomSheet>(null);
-	const handleClosePressCategory = () =>
-		bottomSheetRefCategory.current?.close();
 	const handleOpenPressCategory = () =>
 		bottomSheetRefCategory.current?.expand();
 
 	const bottomSheetRef = useRef<BottomSheet>(null);
-	const handleClosePress = () => bottomSheetRef.current?.close();
 	const handleOpenPress = () => bottomSheetRef.current?.expand();
 
 	const renderBackdrop = useCallback(
@@ -69,30 +70,28 @@ export default function MyStockScreen() {
 		),
 		[]
 	);
-
-	const [isModalVisible, setIsModalVisible] = useState(false);
-
-
-
+	
 	const [listOfItems, setListOfItems] = useState([
-		{text: 'Мясо', key: '0'},
-		{text: 'Овощи', key: '1'},
-		{text: 'Крупа', key: '2'},
-		{text: 'Лекарства', key: '3'},
-	  ])
-	  const addHandler = (text)=>{
-		setListOfItems((list)=>{
-		  return [
-			{text: text, key: Math.random().toString(36).substring(7)},
-			...list
-		  ]
-		})
-	  };
-	  const deleteHandler = (key) =>{
-		setListOfItems((list) =>{
-		  return list.filter(listOfItems => listOfItems.key != key)
+		{ text: "Мясо", key: "0" },
+		{ text: "Овощи", key: "1" },
+		{ text: "Крупа", key: "2" },
+		{ text: "Лекарства", key: "3" },
+	]);
+
+	const addHandler = (text) => {
+		setListOfItems((list) => {
+			return [
+				{ text: text, key: Math.random().toString(36).substring(7) },
+				...list,
+			];
 		});
-	  };
+	};
+	const deleteHandler = (key) => {
+		setListOfItems((list) => {
+			return list.filter((listOfItems) => listOfItems.key != key);
+		});
+	};
+	
 
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
@@ -100,6 +99,10 @@ export default function MyStockScreen() {
 				<View style={styles.container}>
 					<Text style={{ fontWeight: "bold", fontSize: 18 }}>Мои запасы</Text>
 					<Text style={{ fontStyle: "italic" }}>Категории</Text>
+					<View style={{flexDirection:'row'}}>
+						
+						
+					</View>
 					<TouchableOpacity onPress={handleOpenPress}>
 						<AntDesign
 							style={{ paddingLeft: 250 }}
@@ -230,7 +233,7 @@ export default function MyStockScreen() {
 											width: 300,
 											backgroundColor: "#4D4D4D",
 											borderRadius: 0.5,
-											marginHorizontal: 16,
+											marginHorizontal: 14,
 											marginBottom: 10,
 											fontSize: 16,
 											lineHeight: 20,
@@ -240,13 +243,12 @@ export default function MyStockScreen() {
 									<TouchableOpacity onPress={handleOnPress}>
 										<View
 											style={{
-												paddingTop: 10,
 												backgroundColor: "#4D4D4D",
 												borderRadius: 30,
 												alignItems: "center",
 												justifyContent: "center",
-												height: 50,
-												width: 50,
+												height: 70,
+												width: 70,
 											}}>
 											<Feather
 												style={{
@@ -279,15 +281,15 @@ export default function MyStockScreen() {
 							<Text>Категории</Text>
 						</View>
 						<View style={{ alignItems: "center", justifyContent: "center" }}>
-							<TouchableOpacity onPress={() => setIsModalVisible(true)}>
-								<AntDesign
-									style={{ paddingTop: 5 }}
-									name="pluscircle"
-									size={40}
-									color="#FF784C"
+							<Form addHandler={addHandler} />
+							<View style={styles.flat}>
+								<FlatList
+									data={listOfItems}
+									renderItem={({ item }) => (
+										<ListItem el={item} deleteHandler={deleteHandler} />
+									)}
 								/>
-							</TouchableOpacity>
-							<Form addHandler={undefined} />
+							</View>
 						</View>
 					</BottomSheet>
 				</View>
@@ -339,5 +341,8 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowRadius: 4,
 		elevation: 5,
+	},
+	flat: {
+		height: "72%",
 	},
 });
