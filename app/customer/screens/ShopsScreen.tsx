@@ -6,13 +6,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import {BottomSheetForMyStocks} from './BottomSheetForMyStocks';
 
 
-export default function ShopScreen() {
+export default function ShoppingListScreen() {
   
   return (
 		<SafeAreaView>
-		<View>
-            <Text>123</Text>
-        </View>
+		
 		</SafeAreaView>
 	);
 }

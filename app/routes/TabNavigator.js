@@ -8,11 +8,11 @@ import { Feather } from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 
-import HomeScreen from '../customer/screens/HomeScreen.js';
-import MyStocksScreen from '../customer/screens/MyStocksScreen.js';
-import ShoppingListScreen from '../customer/screens/ShoppingListScreen.js';
-import ShopsScreen from '../customer/screens/ShopsScreen.js';
-
+import HomeScreen from '../customer/screens/HomeScreen.tsx';
+import MyStocksScreen from '../customer/screens/MyStocksScreen.tsx';
+import ShoppingListScreen from '../customer/screens/ShoppingListScreen.tsx';
+import ShopsScreen from '../customer/screens/ShopsScreen.tsx';
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 // const TabArr = [
 // { route: 'Home', label: 'Home', type: iconSet.MaterialCommunityIcons, activeIcon: 'home-outline', component: HomeScreen}
@@ -21,19 +21,36 @@ import ShopsScreen from '../customer/screens/ShopsScreen.js';
 // { route: 'Home', label: 'Home', type: iconSet.Fontisto, activeIcon: 'shopping-store', ShopsScreen}
 // ]
 
+
+
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
+	
 	return (
-		<NavigationContainer>
-			<Tab.Navigator
+		<NavigationContainer >
+			<Tab.Navigator 
 				screenOptions={{
+					tabBarStyle:{
+						borderRadius:36,
+						height:80,
+
+						backgroundColor:"#4A4A4B",
+						position: 'absolute',
+						overflow:'hidden',
+						left: 5,
+						bottom: 0,
+						right: 5,
+						marginBottom:40,
+						borderColor: '#1111'
+					  },
 					tabBarShowLabel: false,
 					headerShown: false,
 					headerTransparent: true,
-					tabBarActiveTintColor: "#1E1E20",
-					tabBarInactiveTintColor: "#6985E7",
-				}}>
-				<Tab.Screen
+					tabBarActiveTintColor: "#4460F5",
+					tabBarInactiveTintColor: "#FFFFFF",
+				}}
+				>
+				<Tab.Screen 
 					name="Home"
 					component={HomeScreen}
 					options={{
