@@ -1,5 +1,3 @@
-
-
 import * as React from "react";
 import {
 	StyleSheet,
@@ -33,27 +31,22 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CalendarStrip from "react-native-calendar-strip";
 import moment from "moment";
 
-
-
-
 export default function HomeScreen() {
-
-	const snapPoints = useMemo(() => ["45%", "73%", "100%"], []);
+	const snapPoints = useMemo(() => ["56%", "75%", "100%"], []);
 
 	return (
-        
-<BottomSheet snapPoints={snapPoints}>
-						<View style={styles.bottomReminders}>
-							<Text style={{ fontSize: 16, fontWeight: "bold" }}>
-								Напоминания и уведомления
-							</Text>
-						</View>
-					</BottomSheet>
-    );
+		<BottomSheet snapPoints={snapPoints}>
+			<View style={styles.bottomReminders}>
+				<Text style={{ fontSize: 16, fontWeight: '300', }}>
+					Напоминания и уведомления
+				</Text>
+			</View>
+		</BottomSheet>
+	);
 }
 
 const styles = StyleSheet.create({
-    bottomReminders:{
-
-    }
-})
+	bottomReminders: {
+		alignItems:'center'
+	},
+});

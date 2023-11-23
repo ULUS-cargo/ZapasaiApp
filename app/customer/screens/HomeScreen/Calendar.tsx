@@ -31,28 +31,31 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CalendarStrip from "react-native-calendar-strip";
 import moment from "moment";
 
+
 export default function HomeScreen() {
 return(
-	
-	<View style={{ width:500,}}>
+	<View style={{ width:1000,backgroundColor:'black',marginTop:10, }}>
 	<CalendarStrip
-		calendarAnimation={{ type: "sequence", duration: 30 }}
+		scrollable
+		calendarAnimation={{ type: "sequence", duration: 30, }}
 		daySelectionAnimation={{
-			type: "border",
+			type: 'border',
 			duration: 200,
 			borderWidth: 1,
-			borderHighlightColor: "white",
+			borderHighlightColor: "black",
+			
 		}}
 
-		style= {{justifyContent:'center',height:80, borderRadius:50}}
-		calendarHeaderStyle = {{color:'white'}}
+		style= {{justifyContent:'center',left:0,right:0,top:0,height:100}}
+		
+		calendarHeaderStyle = {{color:'black',}}
 		calendarColor="white"
 		highlightDateNameStyle={{color:'red'}}
-		highlightDateNumberStyle = {{color:'black' }}
+		highlightDateNumberStyle = {{color:'red' }}
 		disabledDateNameStyle={{color:'black'}}
-		disabledDateNumberStyle={{color:'black'}}
+		disabledDateNumberStyle={{color:'white'}}
 		// datesBlacklist={dateBlackList}
-		iconContainer={{flex:0.1}}
+		iconContainer={{flex:1}}
 
 	/>
 </View>

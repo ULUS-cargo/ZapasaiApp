@@ -25,11 +25,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import DatePicker, { getFormatedDate } from "react-native-modern-datepicker";
-import { isModifier } from "typescript";
 
-
-
-import Form from './MyStocks/Form';
 export default function MyStockScreen() {
 	const today = new Date();
 	const startDate = getFormatedDate(
@@ -69,47 +65,8 @@ export default function MyStockScreen() {
 		),
 		[]
 	);
-
-	const [isModalVisible, setIsModalVisible] = useState(false);
-
-
-
-	const [listOfItems, setListOfItems] = useState([
-		{text: 'Мясо', key: '0'},
-		{text: 'Овощи', key: '1'},
-		{text: 'Крупа', key: '2'},
-		{text: 'Лекарства', key: '3'},
-	  ])
-	  const addHandler = (text)=>{
-		setListOfItems((list)=>{
-		  return [
-			{text: text, key: Math.random().toString(36).substring(7)},
-			...list
-		  ]
-		})
-	  };
-	  const deleteHandler = (key) =>{
-		setListOfItems((list) =>{
-		  return list.filter(listOfItems => listOfItems.key != key)
-		});
-	  };
-
-	return (
-		<GestureHandlerRootView style={{ flex: 1 }}>
-			<SafeAreaView style={{ flex: 1 }}>
-				<View style={styles.container}>
-					<Text style={{ fontWeight: "bold", fontSize: 18 }}>Мои запасы</Text>
-					<Text style={{ fontStyle: "italic" }}>Категории</Text>
-					<TouchableOpacity onPress={handleOpenPress}>
-						<AntDesign
-							style={{ paddingLeft: 250 }}
-							name="pluscircle"
-							size={50}
-							color="#FF784C"
-						/>
-					</TouchableOpacity>
-
-					<BottomSheet
+    return (
+        <BottomSheet
 						backgroundStyle={{ backgroundColor: "#F6F6FA" }}
 						backdropComponent={renderBackdrop}
 						ref={bottomSheetRef}
@@ -121,14 +78,10 @@ export default function MyStockScreen() {
 						snapPoints={snapPoints}>
 						<View style={styles.contentContainer}>
 							<Text>Ваш продукт</Text>
-							<Text style={{ marginBottom: 5 }}>Введите название продукта</Text>
+							<Text>Введите название продукта</Text>
 						</View>
 
-						<BottomSheetTextInput
-							placeholder="Введите запас"
-							placeholderTextColor="black"
-							style={styles.input}
-						/>
+						<BottomSheetTextInput style={styles.input} />
 
 						<TouchableOpacity onPress={handleOnPress}>
 							<View
@@ -171,13 +124,7 @@ export default function MyStockScreen() {
 										marginLeft: 15,
 									}}>
 									<TouchableOpacity onPress={handleOpenPressCategory}>
-										<View
-											style={{
-												flexDirection: "row",
-												width: 100,
-												height: 30,
-												alignItems: "center",
-											}}>
+										<View style={{ flexDirection: "row" }}>
 											<Fontisto
 												name="list-2"
 												size={14}
@@ -220,16 +167,13 @@ export default function MyStockScreen() {
 										onDateChange={handleChange}
 									/>
 									<BottomSheetTextInput
-										placeholder="Введите напоминание"
-										placeholderTextColor="#ffff"
 										style={{
-											color: "white",
 											flexDirection: "row",
 											alignItems: "center",
 											justifyContent: "center",
 											width: 300,
 											backgroundColor: "#4D4D4D",
-											borderRadius: 0.5,
+											borderRadius: 12.5,
 											marginHorizontal: 16,
 											marginBottom: 10,
 											fontSize: 16,
@@ -264,50 +208,14 @@ export default function MyStockScreen() {
 							</View>
 						</Modal>
 					</BottomSheet>
-
-					<BottomSheet
-						backgroundStyle={{ backgroundColor: "#F6F6FA" }}
-						backdropComponent={renderBackdrop}
-						ref={bottomSheetRefCategory}
-						enablePanDownToClose={true}
-						handleIndicatorStyle={{
-							backgroundColor: "#ffff",
-						}}
-						index={0}
-						snapPoints={snapPointsCategory}>
-						<View style={styles.contentContainer}>
-							<Text>Категории</Text>
-						</View>
-						<View style={{ alignItems: "center", justifyContent: "center" }}>
-							<TouchableOpacity onPress={() => setIsModalVisible(true)}>
-								<AntDesign
-									style={{ paddingTop: 5 }}
-									name="pluscircle"
-									size={40}
-									color="#FF784C"
-								/>
-							</TouchableOpacity>
-							<Form addHandler={undefined} />
-						</View>
-					</BottomSheet>
-				</View>
-
-				<StatusBar style="dark" backgroundColor="#1E1E20" />
-			</SafeAreaView>
-		</GestureHandlerRootView>
-	);
+    );
 }
 const styles = StyleSheet.create({
-	container: {
-		padding: 24,
-		flex: 1,
+	contentContainer:{
 		alignItems: "center",
+		justifyContent:'center',
 	},
-	contentContainer: {
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	input: {
+	input:{
 		marginHorizontal: 16,
 		marginBottom: 10,
 		borderRadius: 10,
@@ -318,13 +226,13 @@ const styles = StyleSheet.create({
 		color: "#00160A",
 		borderColor: "#000000",
 	},
-	centeredView: {
+	centeredView:{
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
 		marginTop: 22,
 	},
-	modalView: {
+	modalView:{
 		margin: 20,
 		backgroundColor: "white",
 		borderRadius: 20,
@@ -339,5 +247,5 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowRadius: 4,
 		elevation: 5,
-	},
-});
+	}
+})

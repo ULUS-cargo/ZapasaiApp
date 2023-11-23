@@ -2,33 +2,14 @@ import * as React from "react";
 import {
 	StyleSheet,
 	View,
-	Text,
-	Image,
-	ImageBackground,
-	TouchableOpacity,
-	Modal,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useFonts } from "expo-font";
 
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-
-import { useMemo, useRef, useCallback } from "react";
-import BottomSheet, {
-	BottomSheetBackdrop,
-	BottomSheetTextInput,
-} from "@gorhom/bottom-sheet";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { useMemo } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import CalendarStrip from "react-native-calendar-strip";
 import moment from "moment";
 
 
@@ -73,6 +54,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#1E1E20",
 		flex: 1,
 		alignItems: "center",
+
 	},
 	registrationBackground: {
 		width: 369,
