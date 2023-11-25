@@ -10,11 +10,11 @@ import React from "react";
 
 
 
-export default function ListItem({el, SaveHandler}) {
+export default function ListItemCategoryScreen({el, SaveHandler}) {
 	return (
         <TouchableOpacity onPress={()=> SaveHandler(el.text)}>
-			<View style={{alignItems:'center',justifyContent:'center', borderRadius:15}}>
-            <Text style={styles.txt}>{el.text}</Text>
+			<View style={{alignItems:'center',justifyContent:'center',flexDirection:'row', borderRadius:15}}>
+            <Text style={styles.txt}>{el.text} </Text>
 			</View>
 		</TouchableOpacity>
 	);
@@ -23,20 +23,20 @@ export default function ListItem({el, SaveHandler}) {
 
 const styles = StyleSheet.create({
     txt:{
+        
         color: "white",
         backgroundColor: "#4A4A4C",
-        borderRadius: 15,
-		fontWeight: '700',
+        borderRadius: 10,
         textAlign: "center",
-		textAlignVertical:'center',
 		top:1,
 		left:0,
-		right:0,
+		right:5,
+        marginRight:5,
 		bottom:0,
-		width: 369,
-		height: 68,
+		width: 'auto',
+        margin:5,
+		height:24
 
-        
     },
 
 });

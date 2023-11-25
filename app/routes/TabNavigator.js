@@ -7,12 +7,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
-
+import {createStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../customer/screens/HomeScreen.tsx';
 import MyStocksScreen from '../customer/screens/MyStocksScreen.tsx';
-import ShoppingListScreen from '../customer/screens/ShoppingListScreen.tsx';
+import ShoppingListScreen from '../customer/screens/ShoppingListScreen';
 import ShopsScreen from '../customer/screens/ShopsScreen.tsx';
+import Registation from '../customer/screens/Registration/index.js';
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+
+
+
 
 // const TabArr = [
 // { route: 'Home', label: 'Home', type: iconSet.MaterialCommunityIcons, activeIcon: 'home-outline', component: HomeScreen}
@@ -24,6 +28,7 @@ import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 
 const Tab = createBottomTabNavigator();
+
 export default function TabNavigator() {
 	
 	return (
@@ -77,7 +82,7 @@ export default function TabNavigator() {
 					component={ShoppingListScreen}
 					options={{
 						tabBarIcon: ({ color }) => (
-							<FontAwesome name="shopping-basket" size={24} color={color} />
+							<MaterialCommunityIcons name="food-croissant" size={38} color={color} />
 						),
 					}}
 				/>
@@ -94,4 +99,6 @@ export default function TabNavigator() {
 		</NavigationContainer>
 	);
 }
+
+	  
 const styles = StyleSheet.create({});

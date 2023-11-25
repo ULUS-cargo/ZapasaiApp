@@ -45,7 +45,7 @@ export default function Form({ addHandler }) {
 						borderRadius:15,
 						
 					}}>
-					<Feather name="send" size={24} color="#FFFF" onPress={()=> addHandler(text)} />
+					<Feather name="send" size={24} color="#FFFF" onPress={()=>{ if(text!=""){addHandler(text)}}} />
 				</View>
 			</TouchableOpacity>
 		</View>

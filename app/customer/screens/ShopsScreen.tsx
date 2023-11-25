@@ -1,17 +1,29 @@
-import React, { useRef } from "react";
+import React, { useRef, useMemo, useCallback } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import BottomSheet, {
+	BottomSheetBackdrop,
+	BottomSheetModal,
+	useBottomSheetModal,
+} from "@gorhom/bottom-sheet";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {BottomSheetForMyStocks} from './BottomSheetForMyStocks';
+import { BottomSheetForMyStocks } from "./BottomSheetForMyStocks";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 
-export default function ShoppingListScreen() {
-  
-  return (
-		<SafeAreaView>
-		
-		</SafeAreaView>
+export default function HomeScreen() {
+	const snapPoints = useMemo(() => ["56%", "75%", "100%"], []);
+
+	return (
+		<GestureHandlerRootView>
+		<BottomSheet snapPoints={snapPoints}>
+			<View style={styles.bottomReminders}>
+				<Text style={{ fontSize: 16, fontWeight: '300', }}>
+					Напоминания и уведомления
+				</Text>
+			</View>
+		</BottomSheet>
+		</GestureHandlerRootView>
 	);
 }
 
@@ -36,4 +48,7 @@ const styles = StyleSheet.create({
 		color: "#00160A",
 		borderColor: "#000000",
 	},
+	bottomReminders:{
+		
+	}
 });

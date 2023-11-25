@@ -2,6 +2,7 @@ import * as React from "react";
 import {
 	StyleSheet,
 	View,
+	ImageBackground
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -29,7 +30,9 @@ export default function HomeScreen() {
 
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
+
 			<SafeAreaView style={{ flex: 1 }}>
+				
 				<View style={styles.container}>
 					{/* Регистрацияяяяя */}
 					<RegistrationDiv />  

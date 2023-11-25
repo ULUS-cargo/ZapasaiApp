@@ -30,7 +30,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import CalendarStrip from "react-native-calendar-strip";
 import moment from "moment";
-
+import Registration from '../Registration/index';
 export default function HomeScreen() {
 	return (
 		<ImageBackground
@@ -76,13 +76,15 @@ export default function HomeScreen() {
 
 					justifyContent: "center",
 				}}>
-				<Text style={styles.registrationText}>Войти как магазин</Text>
+				<TouchableOpacity onPress={()=>{}}>
+					<Text style={styles.registrationText}>Войти как магазин</Text>
+				</TouchableOpacity>
 			</View>
 		</ImageBackground>
 	);
 }
 const styles = StyleSheet.create({
-    registrationBackground: {
+	registrationBackground: {
 		width: 369,
 		height: 180,
 		alignItems: "center",
@@ -95,4 +97,4 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
-})
+});
