@@ -2,7 +2,7 @@ import {View, Text, TouchableOpacity, TextInput,StyleSheet, Alert} from 'react-n
 import React, {useRef,useState} from 'react';
 import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
 import { firebaseConfig } from '../../../../config';
-import firebase from 'firebase/compat/app';
+import firebase from 'firebase/compat';
 const Otp =() =>{
    const [phoneNumber, setPhoneNumber] = useState('');
    const [code, setCode] = useState('');

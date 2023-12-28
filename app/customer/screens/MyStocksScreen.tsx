@@ -81,7 +81,7 @@ export default function MyStockScreen() {
 				...list,
 			];
 		});
-	};
+	};	
 
 	const [DATA, setListofDATA] = useState([
 		{ date: "2023/11/29", category: "Все", product: "Молоко", Stock:'Купить', key: "0" },
