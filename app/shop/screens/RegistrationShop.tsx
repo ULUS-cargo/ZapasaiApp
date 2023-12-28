@@ -1,18 +1,20 @@
 import React, { useRef } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import { BottomSheetModal, TouchableHighlight, useBottomSheetModal } from "@gorhom/bottom-sheet";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {BottomSheetForMyStocks} from './BottomSheetForMyStocks';
 
 
-export default function ShopScreen() {
-  
+
+export default function RegistrationShop({navigation}) {
+  const onClickLink = ()=>{
+    navigation.navigate('Home');
+  }
   return (
 		<SafeAreaView>
-		<View>
-            <Text>123</Text>
-        </View>
+		<TouchableHighlight >
+        <Text>Вернуться</Text>
+        </TouchableHighlight>
 		</SafeAreaView>
 	);
 }

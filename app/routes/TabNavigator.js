@@ -7,11 +7,15 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
+import {createStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from '../customer/screens/HomeScreen.tsx';
+import MyStocksScreen from '../customer/screens/MyStocksScreen.tsx';
+import ShoppingListScreen from '../customer/screens/ShoppingListScreen';
+import ShopsScreen from '../customer/screens/ShopsScreen.tsx';
+import Registation from '../customer/screens/Registration/index.js';
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
-import HomeScreen from '../customer/screens/HomeScreen.js';
-import MyStocksScreen from '../customer/screens/MyStocksScreen.js';
-import ShoppingListScreen from '../customer/screens/ShoppingListScreen.js';
-import ShopsScreen from '../customer/screens/ShopsScreen.js';
+
 
 
 // const TabArr = [
@@ -21,19 +25,37 @@ import ShopsScreen from '../customer/screens/ShopsScreen.js';
 // { route: 'Home', label: 'Home', type: iconSet.Fontisto, activeIcon: 'shopping-store', ShopsScreen}
 // ]
 
+
+
 const Tab = createBottomTabNavigator();
+
 export default function TabNavigator() {
+	
 	return (
-		<NavigationContainer>
-			<Tab.Navigator
+		<NavigationContainer >
+			<Tab.Navigator 
 				screenOptions={{
+					tabBarStyle:{
+						borderRadius:36,
+						height:80,
+
+						backgroundColor:"#4A4A4B",
+						position: 'absolute',
+						overflow:'hidden',
+						left: 5,
+						bottom: 0,
+						right: 5,
+						marginBottom:40,
+						borderColor: '#1111'
+					  },
 					tabBarShowLabel: false,
 					headerShown: false,
 					headerTransparent: true,
-					tabBarActiveTintColor: "#1E1E20",
-					tabBarInactiveTintColor: "#6985E7",
-				}}>
-				<Tab.Screen
+					tabBarActiveTintColor: "#4460F5",
+					tabBarInactiveTintColor: "#FFFFFF",
+				}}
+				>
+				<Tab.Screen 
 					name="Home"
 					component={HomeScreen}
 					options={{
@@ -60,7 +82,7 @@ export default function TabNavigator() {
 					component={ShoppingListScreen}
 					options={{
 						tabBarIcon: ({ color }) => (
-							<FontAwesome name="shopping-basket" size={24} color={color} />
+							<MaterialCommunityIcons name="food-croissant" size={38} color={color} />
 						),
 					}}
 				/>
@@ -77,4 +99,6 @@ export default function TabNavigator() {
 		</NavigationContainer>
 	);
 }
+
+	  
 const styles = StyleSheet.create({});
